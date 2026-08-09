@@ -7,7 +7,7 @@ export function Logo({ light = false }: { light?: boolean }) {
       <span
         className={cn(
           "flex h-9 w-9 items-center justify-center rounded-lg text-sm font-extrabold",
-          light ? "bg-accent-400 text-brand-950" : "bg-brand-900 text-white"
+          light ? "bg-white text-accent-600" : "bg-accent-500 text-white"
         )}
       >
         BR

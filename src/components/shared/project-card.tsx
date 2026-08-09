@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Image as SanityImage } from "sanity";
-import { Icon } from "@/components/ui/icon";
+import { ServiceIcon } from "@/components/ui/service-icon";
 import { getServiceBySlug } from "@/lib/content/services";
 import { urlForImage } from "@/sanity/image";
 
@@ -30,7 +30,7 @@ export function ProjectCard({
       href={`/projects/${slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-brand-900/10 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
     >
-      <div className="relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br from-brand-900 via-brand-700 to-brand-500">
+      <div className="relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br from-accent-100 via-accent-100 to-accent-200">
         {coverImage ? (
           <Image
             src={urlForImage(coverImage).width(600).height(320).fit("crop").url()}
@@ -39,9 +39,15 @@ export function ProjectCard({
             className="object-cover"
           />
         ) : (
-          service && <Icon name={service.icon} className="h-10 w-10 text-white/80" />
+          service && (
+            <ServiceIcon
+              icon={service.icon}
+              className="h-16 w-16 text-accent-500"
+              iconClassName="h-10 w-10"
+            />
+          )
         )}
-        <span className="absolute top-4 right-4 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
+        <span className="absolute top-4 right-4 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-brand-800 backdrop-blur">
           {year}
         </span>
       </div>

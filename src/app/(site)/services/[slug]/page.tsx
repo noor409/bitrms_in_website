@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Prose } from "@/components/shared/prose";
 import { ProjectCard } from "@/components/shared/project-card";
 import { CTASection } from "@/components/shared/cta-section";
-import { Icon } from "@/components/ui/icon";
+import { ServiceIcon } from "@/components/ui/service-icon";
 import { sanityFetch } from "@/sanity/fetch";
 import { projectsByServiceQuery, serviceBySlugQuery } from "@/sanity/queries";
 import { getServiceBySlug, services } from "@/lib/content/services";
@@ -57,9 +57,11 @@ export default async function ServiceDetailPage({
 
             <div className="space-y-8">
               <div className="rounded-2xl border border-brand-900/10 bg-brand-50 p-6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-900 text-white">
-                  <Icon name={service.icon} className="h-5 w-5" />
-                </div>
+                <ServiceIcon
+                  icon={service.icon}
+                  className="h-11 w-11 rounded-lg bg-accent-100 text-accent-600"
+                  iconClassName="h-5 w-5"
+                />
                 <h3 className="mt-4 text-base font-bold text-brand-950">Key Offerings</h3>
                 <ul className="mt-4 space-y-2.5">
                   {service.features.map((feature) => (

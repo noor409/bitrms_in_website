@@ -9,16 +9,16 @@ export function CTASection({
   description?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-950 py-20">
-      <div className="bg-grid absolute inset-0" />
+    <section className="relative overflow-hidden border-y border-brand-100 bg-white py-20">
+      <div className="bg-dots absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_50%_60%_at_50%_50%,black,transparent)]" />
       <Container className="relative flex flex-col items-center gap-6 text-center">
-        <h2 className="text-balance text-3xl font-bold text-white sm:text-4xl">{title}</h2>
-        <p className="max-w-xl text-lg text-brand-200">{description}</p>
+        <h2 className="text-balance text-3xl font-bold text-brand-900 sm:text-4xl">{title}</h2>
+        <p className="max-w-xl text-lg text-brand-600">{description}</p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Button href="/contact" variant="primary">
             Get in Touch
           </Button>
-          <Button href="/services" variant="ghost">
+          <Button href="/services" variant="secondary">
             Explore Services
           </Button>
         </div>

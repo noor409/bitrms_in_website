@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Prose } from "@/components/shared/prose";
 import { PortableTextBody } from "@/components/shared/portable-text-body";
 import { CTASection } from "@/components/shared/cta-section";
-import { Icon } from "@/components/ui/icon";
+import { ServiceIcon } from "@/components/ui/service-icon";
 import { sanityFetch } from "@/sanity/fetch";
 import { projectBySlugQuery } from "@/sanity/queries";
 import { urlForImage } from "@/sanity/image";
@@ -77,9 +77,11 @@ export default async function ProjectDetailPage({
             <div className="space-y-8">
               <div className="rounded-2xl border border-brand-900/10 bg-brand-50 p-6">
                 {service && (
-                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-900 text-white">
-                    <Icon name={service.icon} className="h-5 w-5" />
-                  </div>
+                  <ServiceIcon
+                    icon={service.icon}
+                    className="h-11 w-11 rounded-lg bg-accent-100 text-accent-600"
+                    iconClassName="h-5 w-5"
+                  />
                 )}
                 {project.outcomes?.length > 0 && (
                   <>

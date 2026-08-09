@@ -5,11 +5,11 @@ type ButtonVariant = "primary" | "secondary" | "ghost";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent-400 text-brand-950 hover:bg-accent-300 focus-visible:outline-accent-400",
+    "bg-accent-500 text-white hover:bg-accent-600 focus-visible:outline-accent-500",
   secondary:
-    "bg-white text-brand-900 hover:bg-brand-50 focus-visible:outline-brand-500",
+    "bg-white text-brand-900 ring-1 ring-inset ring-brand-200 hover:bg-brand-50 focus-visible:outline-brand-500",
   ghost:
-    "bg-transparent text-white ring-1 ring-inset ring-white/30 hover:bg-white/10 focus-visible:outline-white",
+    "bg-transparent text-brand-800 ring-1 ring-inset ring-brand-300 hover:bg-brand-100 focus-visible:outline-brand-500",
 };
 
 const baseClasses =

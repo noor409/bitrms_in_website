@@ -145,7 +145,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex items-center gap-2 rounded-full bg-accent-400 px-6 py-3 text-sm font-semibold text-brand-950 transition-colors hover:bg-accent-300 disabled:opacity-60"
+        className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600 disabled:opacity-60"
       >
         {status === "submitting" ? (
           <Loader2 className="h-4 w-4 animate-spin" />

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Icon } from "@/components/ui/icon";
+import { ServiceIcon } from "@/components/ui/service-icon";
 import type { IconKey } from "@/lib/content/types";
 
 export function ServiceCard({
@@ -20,9 +20,11 @@ export function ServiceCard({
       className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-brand-900/10 bg-white p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
     >
       <div>
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-900 text-white transition-colors group-hover:bg-accent-400 group-hover:text-brand-950">
-          <Icon name={icon} className="h-6 w-6" />
-        </div>
+        <ServiceIcon
+          icon={icon}
+          className="h-12 w-12 rounded-xl bg-accent-100 text-accent-600 transition-colors group-hover:bg-accent-500 group-hover:text-white"
+          iconClassName="h-6 w-6"
+        />
         <h3 className="mt-5 text-lg font-bold text-brand-950">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-brand-700">{summary}</p>
       </div>

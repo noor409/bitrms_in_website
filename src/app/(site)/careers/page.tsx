@@ -45,7 +45,7 @@ export default async function CareersPage() {
                   href={`mailto:${siteSettings.email}?subject=${encodeURIComponent(
                     `Application: ${job.title}`
                   )}`}
-                  className="mt-4 inline-block shrink-0 rounded-full bg-brand-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-800 sm:mt-0"
+                  className="mt-4 inline-block shrink-0 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-600 sm:mt-0"
                 >
                   Apply Now
                 </a>
