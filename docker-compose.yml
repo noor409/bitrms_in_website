@@ -1,0 +1,15 @@
+# Runs the pre-built image on the VPS. CI builds and pushes the image;
+# this file only pulls and runs it. NEXT_PUBLIC_* values are already baked
+# into the image at build time — this only needs runtime secrets.
+#
+# On the server, create a `.env` file next to this one containing:
+#   RESEND_API_KEY=your-key-here   (optional — omit to use the mailto fallback)
+services:
+  web:
+    image: ghcr.io/noor409/bitrms_in_website:latest
+    container_name: bitrms-website
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
