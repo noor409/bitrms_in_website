@@ -8,6 +8,7 @@ import { Prose } from "@/components/shared/prose";
 import { ProjectCard } from "@/components/shared/project-card";
 import { CTASection } from "@/components/shared/cta-section";
 import { ServiceIcon } from "@/components/ui/service-icon";
+import { ServiceSectionBackground } from "@/components/ui/service-section-background";
 import { sanityFetch } from "@/sanity/fetch";
 import { projectsByServiceQuery, serviceBySlugQuery } from "@/sanity/queries";
 import { getServiceBySlug, services } from "@/lib/content/services";
@@ -48,8 +49,9 @@ export default async function ServiceDetailPage({
     <>
       <PageHero kicker={service.heroKicker} title={service.title} description={service.summary} />
 
-      <section className="py-24">
-        <Container>
+      <section className="relative overflow-hidden py-24">
+        <ServiceSectionBackground icon={service.icon} className="absolute inset-0 h-full w-full" />
+        <Container className="relative">
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <Prose paragraphs={service.body} />

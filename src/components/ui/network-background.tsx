@@ -60,8 +60,8 @@ export function NetworkBackground({
       particles = Array.from({ length: Math.max(50, count) }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
       }));
     }
 
