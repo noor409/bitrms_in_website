@@ -42,19 +42,19 @@ export default async function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <SectionHeading kicker="Mission" title="Why we exist" />
-              <p className="mt-4 text-base leading-relaxed text-brand-700">{mission}</p>
+              <p className="mt-4 text-base leading-relaxed text-brand-300">{mission}</p>
             </div>
             <div>
               <SectionHeading kicker="Vision" title="Where we're headed" />
-              <p className="mt-4 text-base leading-relaxed text-brand-700">{vision}</p>
+              <p className="mt-4 text-base leading-relaxed text-brand-300">{vision}</p>
             </div>
           </div>
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value) => (
-              <div key={value.title} className="rounded-2xl border border-brand-900/10 bg-white p-6">
-                <h3 className="text-base font-bold text-brand-950">{value.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-600">{value.description}</p>
+              <div key={value.title} className="rounded-2xl border border-white/10 bg-brand-900 p-6">
+                <h3 className="text-base font-bold text-white">{value.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-brand-300">{value.description}</p>
               </div>
             ))}
           </div>
@@ -62,7 +62,7 @@ export default async function AboutPage() {
       </section>
 
       {certifications && certifications.length > 0 && (
-        <section className="bg-brand-50 py-24">
+        <section className="bg-brand-900 py-24">
           <Container>
             <SectionHeading kicker="Recognition" title="Certifications & accreditations" align="center" className="mx-auto" />
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

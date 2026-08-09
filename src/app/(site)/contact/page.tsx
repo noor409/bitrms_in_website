@@ -27,29 +27,29 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-6 lg:col-span-2">
-              <div className="rounded-2xl border border-brand-900/10 bg-brand-50 p-6">
-                <h3 className="text-base font-bold text-brand-950">Contact details</h3>
-                <ul className="mt-4 space-y-4 text-sm text-brand-700">
+              <div className="rounded-2xl border border-white/10 bg-brand-900 p-6">
+                <h3 className="text-base font-bold text-white">Contact details</h3>
+                <ul className="mt-4 space-y-4 text-sm text-brand-300">
                   <li className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent-500" />
+                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent-400" />
                     {siteSettings.address}
                   </li>
                   <li className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 shrink-0 text-accent-500" />
-                    <a href={`tel:${siteSettings.phone}`} className="hover:text-brand-950">
+                    <Phone className="h-5 w-5 shrink-0 text-accent-400" />
+                    <a href={`tel:${siteSettings.phone}`} className="hover:text-white">
                       {siteSettings.phone}
                     </a>
                   </li>
                   <li className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 shrink-0 text-accent-500" />
-                    <a href={`mailto:${siteSettings.email}`} className="hover:text-brand-950">
+                    <Mail className="h-5 w-5 shrink-0 text-accent-400" />
+                    <a href={`mailto:${siteSettings.email}`} className="hover:text-white">
                       {siteSettings.email}
                     </a>
                   </li>
                 </ul>
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-brand-900/10">
+              <div className="overflow-hidden rounded-2xl border border-white/10">
                 <iframe
                   title="Office location map"
                   className="h-64 w-full"

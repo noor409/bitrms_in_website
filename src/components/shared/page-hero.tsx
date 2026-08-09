@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import { NetworkBackground } from "@/components/ui/network-background";
 
 export function PageHero({
   kicker,
@@ -10,20 +11,21 @@ export function PageHero({
   description?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-50 py-24">
-      <div className="bg-dots absolute inset-0 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]" />
-      <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent-200/60 blur-3xl" />
+    <section className="relative overflow-hidden bg-brand-950 py-24">
+      <NetworkBackground className="absolute inset-0 h-full w-full" density={0.6} />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/70 to-transparent" />
+
       <Container className="relative max-w-3xl">
         {kicker && (
-          <p className="mb-3 text-sm font-semibold tracking-wide text-accent-600 uppercase">
+          <p className="mb-3 text-sm font-semibold tracking-wide text-accent-400 uppercase">
             {kicker}
           </p>
         )}
-        <h1 className="text-balance text-4xl font-bold tracking-tight text-brand-900 sm:text-5xl">
+        <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
           {title}
         </h1>
         {description && (
-          <p className="mt-5 text-lg leading-relaxed text-brand-600">{description}</p>
+          <p className="mt-5 text-lg leading-relaxed text-brand-300">{description}</p>
         )}
       </Container>
     </section>

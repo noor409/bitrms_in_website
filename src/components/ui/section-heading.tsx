@@ -5,14 +5,12 @@ export function SectionHeading({
   title,
   description,
   align = "left",
-  light = false,
   className,
 }: {
   kicker?: string;
   title: string;
   description?: string;
   align?: "left" | "center";
-  light?: boolean;
   className?: string;
 }) {
   return (
@@ -24,28 +22,14 @@ export function SectionHeading({
       )}
     >
       {kicker && (
-        <p
-          className={cn(
-            "mb-3 text-sm font-semibold tracking-wide uppercase",
-            light ? "text-accent-300" : "text-accent-600"
-          )}
-        >
+        <p className="mb-3 text-sm font-semibold tracking-wide text-accent-400 uppercase">
           {kicker}
         </p>
       )}
-      <h2
-        className={cn(
-          "text-balance text-3xl font-bold tracking-tight sm:text-4xl",
-          light ? "text-white" : "text-brand-950"
-        )}
-      >
+      <h2 className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
         {title}
       </h2>
-      {description && (
-        <p className={cn("mt-4 text-lg", light ? "text-brand-100" : "text-brand-700")}>
-          {description}
-        </p>
-      )}
+      {description && <p className="mt-4 text-lg text-brand-300">{description}</p>}
     </div>
   );
 }

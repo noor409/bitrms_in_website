@@ -21,22 +21,22 @@ export default function BlogPage() {
 
       <section className="py-24">
         <Container className="max-w-4xl">
-          <div className="divide-y divide-brand-900/10">
+          <div className="divide-y divide-white/10">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 className="group block py-8 first:pt-0"
               >
-                <p className="text-xs font-semibold tracking-wide text-accent-600 uppercase">
+                <p className="text-xs font-semibold tracking-wide text-accent-400 uppercase">
                   {post.category} &middot; {new Date(post.publishedAt).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}
                 </p>
-                <h2 className="mt-2 flex items-center gap-2 text-xl font-bold text-brand-950 group-hover:text-accent-600">
+                <h2 className="mt-2 flex items-center gap-2 text-xl font-bold text-white group-hover:text-accent-400">
                   {post.title}
                   <ArrowUpRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
                 </h2>
-                <p className="mt-2 text-sm leading-relaxed text-brand-600">{post.excerpt}</p>
-                <p className="mt-3 text-sm font-medium text-brand-500">By {post.author}</p>
+                <p className="mt-2 text-sm leading-relaxed text-brand-300">{post.excerpt}</p>
+                <p className="mt-3 text-sm font-medium text-brand-400">By {post.author}</p>
               </Link>
             ))}
           </div>

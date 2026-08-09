@@ -7,6 +7,9 @@ import { siteSettings } from "@/lib/content/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+const inputClasses =
+  "mt-1.5 w-full rounded-lg border border-white/15 bg-brand-900 px-4 py-2.5 text-sm text-white outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20";
+
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
 
@@ -52,9 +55,9 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-brand-900/10 bg-brand-50 p-8 text-center">
-        <h3 className="text-lg font-bold text-brand-950">Thanks &mdash; we&apos;ll be in touch.</h3>
-        <p className="mt-2 text-sm text-brand-600">
+      <div className="rounded-2xl border border-white/10 bg-brand-900 p-8 text-center">
+        <h3 className="text-lg font-bold text-white">Thanks &mdash; we&apos;ll be in touch.</h3>
+        <p className="mt-2 text-sm text-brand-300">
           We&apos;ve received your message and will respond within one business day.
         </p>
       </div>
@@ -65,51 +68,31 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="text-sm font-medium text-brand-800">
+          <label htmlFor="name" className="text-sm font-medium text-brand-300">
             Name
           </label>
-          <input
-            id="name"
-            name="name"
-            required
-            className="mt-1.5 w-full rounded-lg border border-brand-900/15 px-4 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-          />
+          <input id="name" name="name" required className={inputClasses} />
         </div>
         <div>
-          <label htmlFor="email" className="text-sm font-medium text-brand-800">
+          <label htmlFor="email" className="text-sm font-medium text-brand-300">
             Email
           </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            className="mt-1.5 w-full rounded-lg border border-brand-900/15 px-4 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-          />
+          <input id="email" name="email" type="email" required className={inputClasses} />
         </div>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" className="text-sm font-medium text-brand-800">
+          <label htmlFor="phone" className="text-sm font-medium text-brand-300">
             Phone (optional)
           </label>
-          <input
-            id="phone"
-            name="phone"
-            className="mt-1.5 w-full rounded-lg border border-brand-900/15 px-4 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-          />
+          <input id="phone" name="phone" className={inputClasses} />
         </div>
         <div>
-          <label htmlFor="service" className="text-sm font-medium text-brand-800">
+          <label htmlFor="service" className="text-sm font-medium text-brand-300">
             Service of interest
           </label>
-          <select
-            id="service"
-            name="service"
-            className="mt-1.5 w-full rounded-lg border border-brand-900/15 px-4 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-            defaultValue=""
-          >
+          <select id="service" name="service" className={inputClasses} defaultValue="">
             <option value="" disabled>
               Select a service
             </option>
@@ -124,20 +107,14 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="text-sm font-medium text-brand-800">
+        <label htmlFor="message" className="text-sm font-medium text-brand-300">
           Message
         </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={5}
-          className="mt-1.5 w-full rounded-lg border border-brand-900/15 px-4 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-        />
+        <textarea id="message" name="message" required rows={5} className={inputClasses} />
       </div>
 
       {status === "error" && (
-        <p className="text-sm font-medium text-red-600">
+        <p className="text-sm font-medium text-red-400">
           Something went wrong. Please email us directly at {siteSettings.email}.
         </p>
       )}
@@ -145,7 +122,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600 disabled:opacity-60"
+        className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-brand-950 transition-colors hover:bg-accent-400 disabled:opacity-60"
       >
         {status === "submitting" ? (
           <Loader2 className="h-4 w-4 animate-spin" />

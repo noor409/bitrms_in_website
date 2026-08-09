@@ -1,33 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1f2937;
+  --background: #040319;
+  --foreground: #f5f7fa;
 
-  /* Brand — neutral charcoal/slate, for text and dark accents */
-  --color-brand-950: #0b1220;
-  --color-brand-900: #111827;
-  --color-brand-800: #1f2937;
-  --color-brand-700: #334155;
-  --color-brand-600: #475569;
-  --color-brand-500: #64748b;
-  --color-brand-400: #94a3b8;
-  --color-brand-300: #cbd5e1;
-  --color-brand-200: #e2e8f0;
-  --color-brand-100: #f1f5f9;
-  --color-brand-50: #f8fafc;
+  /* Brand — dark navy scale. 950 = page background, higher-lightness
+     steps are used for surfaces/text on that dark background. */
+  --color-brand-950: #040319;
+  --color-brand-900: #0b1024;
+  --color-brand-800: #131a33;
+  --color-brand-700: #232c4a;
+  --color-brand-600: #3a4468;
+  --color-brand-500: #5b6690;
+  --color-brand-400: #8891b3;
+  --color-brand-300: #aeb5cf;
+  --color-brand-200: #cdd2e4;
+  --color-brand-100: #e7e9f2;
+  --color-brand-50: #f5f7fa;
 
-  /* Accent — vivid blue, the site's primary CTA/highlight color */
-  --color-accent-600: #0b56d1;
-  --color-accent-500: #116dff;
-  --color-accent-400: #5e97ff;
-  --color-accent-300: #8fb4ff;
-  --color-accent-200: #c3d9ff;
-  --color-accent-100: #e8f1ff;
-
-  /* Signal — a small, sparing secondary pop (decorative use only) */
-  --color-signal-500: #a3d900;
-  --color-signal-400: #dcfd35;
+  /* Accent — lime green, the site's primary CTA/highlight color */
+  --color-accent-600: #b8d81a;
+  --color-accent-500: #dcfd35;
+  --color-accent-400: #e7fd6b;
+  --color-accent-300: #eefd94;
+  --color-accent-200: #f5feba;
+  --color-accent-100: #fafedd;
 }
 
 @theme inline {
@@ -53,9 +50,6 @@
   --color-accent-500: var(--color-accent-500);
   --color-accent-600: var(--color-accent-600);
 
-  --color-signal-400: var(--color-signal-400);
-  --color-signal-500: var(--color-signal-500);
-
   --font-sans: var(--font-inter);
 }
 
@@ -67,12 +61,6 @@ body {
 
 .text-balance {
   text-wrap: balance;
-}
-
-/* Subtle dot texture for light sections — replaces the old dark grid */
-.bg-dots {
-  background-image: radial-gradient(rgba(17, 109, 255, 0.16) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
 }
 
 /* Per-service decorative micro-animations (ServiceIcon component) */

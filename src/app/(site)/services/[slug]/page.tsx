@@ -56,29 +56,29 @@ export default async function ServiceDetailPage({
             </div>
 
             <div className="space-y-8">
-              <div className="rounded-2xl border border-brand-900/10 bg-brand-50 p-6">
+              <div className="rounded-2xl border border-white/10 bg-brand-900 p-6">
                 <ServiceIcon
                   icon={service.icon}
-                  className="h-11 w-11 rounded-lg bg-accent-100 text-accent-600"
+                  className="h-11 w-11 rounded-lg bg-accent-500/10 text-accent-400"
                   iconClassName="h-5 w-5"
                 />
-                <h3 className="mt-4 text-base font-bold text-brand-950">Key Offerings</h3>
+                <h3 className="mt-4 text-base font-bold text-white">Key Offerings</h3>
                 <ul className="mt-4 space-y-2.5">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm text-brand-700">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" />
+                    <li key={feature} className="flex items-start gap-2 text-sm text-brand-300">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-400" />
                       {feature}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-brand-900/10 bg-white p-6">
-                <h3 className="text-base font-bold text-brand-950">Benefits</h3>
+              <div className="rounded-2xl border border-white/10 bg-brand-900 p-6">
+                <h3 className="text-base font-bold text-white">Benefits</h3>
                 <ul className="mt-4 space-y-2.5">
                   {service.benefits.map((benefit) => (
-                    <li key={benefit} className="flex items-start gap-2 text-sm text-brand-700">
-                      <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
+                    <li key={benefit} className="flex items-start gap-2 text-sm text-brand-300">
+                      <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
                       {benefit}
                     </li>
                   ))}
@@ -90,7 +90,7 @@ export default async function ServiceDetailPage({
       </section>
 
       {relatedProjects && relatedProjects.length > 0 && (
-        <section className="bg-brand-50 py-24">
+        <section className="bg-brand-900 py-24">
           <Container>
             <SectionHeading kicker="In Practice" title="Related projects" />
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

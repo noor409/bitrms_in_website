@@ -72,7 +72,7 @@ export default async function HomePage() {
               <SectionHeading kicker="Recent Work" title="Case studies from across our practices" />
               <Link
                 href="/projects"
-                className="text-sm font-semibold text-accent-600 hover:text-accent-500"
+                className="text-sm font-semibold text-accent-400 hover:text-accent-300"
               >
                 View all projects &rarr;
               </Link>
@@ -87,7 +87,7 @@ export default async function HomePage() {
       )}
 
       {testimonials && testimonials.length > 0 && (
-        <section className="bg-brand-50 py-24">
+        <section className="bg-brand-900 py-24">
           <Container>
             <SectionHeading
               kicker="What Clients Say"

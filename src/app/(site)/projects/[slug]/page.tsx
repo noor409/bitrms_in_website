@@ -75,21 +75,21 @@ export default async function ProjectDetailPage({
             </div>
 
             <div className="space-y-8">
-              <div className="rounded-2xl border border-brand-900/10 bg-brand-50 p-6">
+              <div className="rounded-2xl border border-white/10 bg-brand-900 p-6">
                 {service && (
                   <ServiceIcon
                     icon={service.icon}
-                    className="h-11 w-11 rounded-lg bg-accent-100 text-accent-600"
+                    className="h-11 w-11 rounded-lg bg-accent-500/10 text-accent-400"
                     iconClassName="h-5 w-5"
                   />
                 )}
                 {project.outcomes?.length > 0 && (
                   <>
-                    <h3 className="mt-4 text-base font-bold text-brand-950">Outcomes</h3>
+                    <h3 className="mt-4 text-base font-bold text-white">Outcomes</h3>
                     <ul className="mt-4 space-y-2.5">
                       {project.outcomes.map((outcome) => (
-                        <li key={outcome} className="flex items-start gap-2 text-sm text-brand-700">
-                          <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" />
+                        <li key={outcome} className="flex items-start gap-2 text-sm text-brand-300">
+                          <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent-400" />
                           {outcome}
                         </li>
                       ))}

@@ -32,7 +32,7 @@ export default async function ProjectsPage() {
               ))}
             </div>
           ) : (
-            <p className="text-center text-brand-600">
+            <p className="text-center text-brand-400">
               Case studies are being published here as projects are completed. Check back soon,
               or get in touch to discuss a project directly.
             </p>
