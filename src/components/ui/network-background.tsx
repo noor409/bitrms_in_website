@@ -9,11 +9,16 @@ interface Particle {
   vy: number;
 }
 
+const MOUSE_LINK_DISTANCE = 170;
+const MOUSE_REPEL_RADIUS = 110;
+
 /**
  * A live, animated particle-network graphic — dots drifting slowly and
- * connecting to nearby neighbors with fading lines. Runs continuously via
- * requestAnimationFrame (a real animation, not a looping image). Falls back
- * to a single static frame when the user prefers reduced motion.
+ * connecting to nearby neighbors with fading lines. The cursor acts as an
+ * extra node: nearby particles link to it and get gently pushed as it
+ * moves. Runs continuously via requestAnimationFrame (a real animation, not
+ * a looping image). Falls back to a single static frame when the user
+ * prefers reduced motion (mouse interaction still works in that case).
  */
 export function NetworkBackground({
   className,
@@ -39,6 +44,7 @@ export function NetworkBackground({
     let height = 0;
     let particles: Particle[] = [];
     let animationFrame = 0;
+    const mouse: { x: number; y: number } | { x: null; y: null } = { x: null, y: null };
 
     function resize() {
       if (!canvas || !container) return;
@@ -50,12 +56,12 @@ export function NetworkBackground({
       canvas.style.height = `${height}px`;
       ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const count = Math.min(90, Math.round((width * height) / 14000) * density);
-      particles = Array.from({ length: Math.max(24, count) }, () => ({
+      const count = Math.min(150, Math.round((width * height) / 7000) * density);
+      particles = Array.from({ length: Math.max(50, count) }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
       }));
     }
 
@@ -63,7 +69,7 @@ export function NetworkBackground({
       if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
 
-      const linkDistance = Math.min(160, width / 5);
+      const linkDistance = Math.min(170, width / 4.5);
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -81,12 +87,33 @@ export function NetworkBackground({
             ctx.stroke();
           }
         }
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MOUSE_LINK_DISTANCE) {
+            ctx.strokeStyle = `rgba(220, 253, 53, ${0.5 * (1 - dist / MOUSE_LINK_DISTANCE)})`;
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+          }
+        }
       }
 
       for (const p of particles) {
         ctx.fillStyle = "rgba(245, 247, 250, 0.55)";
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (mouse.x !== null && mouse.y !== null) {
+        ctx.fillStyle = "rgba(220, 253, 53, 0.9)";
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 2.5, 0, Math.PI * 2);
         ctx.fill();
       }
     }
@@ -97,9 +124,33 @@ export function NetworkBackground({
         p.y += p.vy;
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MOUSE_REPEL_RADIUS && dist > 0.01) {
+            const force = (1 - dist / MOUSE_REPEL_RADIUS) * 1.1;
+            p.x += (dx / dist) * force;
+            p.y += (dy / dist) * force;
+          }
+        }
       }
       draw();
       animationFrame = requestAnimationFrame(step);
+    }
+
+    function handlePointerMove(event: PointerEvent) {
+      const rect = container!.getBoundingClientRect();
+      mouse.x = event.clientX - rect.left;
+      mouse.y = event.clientY - rect.top;
+      if (prefersReducedMotion) draw();
+    }
+
+    function handlePointerLeave() {
+      mouse.x = null;
+      mouse.y = null;
+      if (prefersReducedMotion) draw();
     }
 
     resize();
@@ -108,6 +159,9 @@ export function NetworkBackground({
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
 
+    container.addEventListener("pointermove", handlePointerMove);
+    container.addEventListener("pointerleave", handlePointerLeave);
+
     if (!prefersReducedMotion) {
       animationFrame = requestAnimationFrame(step);
     }
@@ -115,6 +169,8 @@ export function NetworkBackground({
     return () => {
       cancelAnimationFrame(animationFrame);
       resizeObserver.disconnect();
+      container.removeEventListener("pointermove", handlePointerMove);
+      container.removeEventListener("pointerleave", handlePointerLeave);
     };
   }, [density]);
 
