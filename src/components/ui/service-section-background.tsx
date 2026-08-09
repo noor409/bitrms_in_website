@@ -112,9 +112,9 @@ export function ServiceSectionBackground({
       }
 
       if (icon === "radio-tower") {
-        emitters = [0.72, 0.9].map((fx) => ({
+        emitters = [0.12, 0.38, 0.62, 0.88].map((fx) => ({
           x: width * fx,
-          y: height * (0.3 + Math.random() * 0.4),
+          y: height * (0.15 + Math.random() * 0.7),
           interval: 90 + Math.random() * 40,
           timer: Math.random() * 60,
           rings: [],
@@ -122,9 +122,9 @@ export function ServiceSectionBackground({
       }
 
       if (icon === "globe") {
-        orbiters = Array.from({ length: 34 }, () => ({
-          radiusX: 40 + Math.random() * (width * 0.2),
-          radiusY: 20 + Math.random() * (height * 0.32),
+        orbiters = Array.from({ length: 46 }, () => ({
+          radiusX: 30 + Math.random() * (width * 0.42),
+          radiusY: 20 + Math.random() * (height * 0.42),
           angle: Math.random() * Math.PI * 2,
           speed: 0.002 + Math.random() * 0.006,
           size: 1 + Math.random() * 1.6,
@@ -190,9 +190,9 @@ export function ServiceSectionBackground({
 
     function drawRadar() {
       if (!ctx) return;
-      const cx = width * 0.78;
-      const cy = height * 0.4;
-      const maxR = Math.max(width, height) * 0.4;
+      const cx = width * 0.5;
+      const cy = height * 0.5;
+      const maxR = Math.hypot(width, height) * 0.55;
 
       for (let r = maxR / 3; r <= maxR; r += maxR / 3) {
         ctx.beginPath();
@@ -284,8 +284,8 @@ export function ServiceSectionBackground({
 
     function drawGlobe() {
       if (!ctx) return;
-      const cx = width * 0.78;
-      const cy = height * 0.38;
+      const cx = width * 0.5;
+      const cy = height * 0.5;
       for (const o of orbiters) {
         const x = cx + Math.cos(o.angle) * o.radiusX;
         const y = cy + Math.sin(o.angle) * o.radiusY;
