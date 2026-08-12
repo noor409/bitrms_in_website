@@ -5,6 +5,7 @@ import { homePage } from "./homePage";
 import { jobOpening } from "./jobOpening";
 import { post } from "./post";
 import { project } from "./project";
+import { recognition } from "./recognition";
 import { service } from "./service";
 import { siteSettings } from "./siteSettings";
 import { testimonial } from "./testimonial";
@@ -18,6 +19,7 @@ export const schemaTypes = [
   testimonial,
   certification,
   clientLogo,
+  recognition,
   jobOpening,
   post,
 ];

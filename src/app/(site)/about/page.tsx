@@ -3,11 +3,13 @@ import { PageHero } from "@/components/shared/page-hero";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CertificationBadge } from "@/components/shared/certification-badge";
+import { RecognitionLogos } from "@/components/shared/recognition-logos";
 import { CTASection } from "@/components/shared/cta-section";
 import { sanityFetch } from "@/sanity/fetch";
-import { aboutPageQuery, certificationsQuery } from "@/sanity/queries";
+import { aboutPageQuery, certificationsQuery, recognitionQuery } from "@/sanity/queries";
 import { missionVisionValues } from "@/lib/content/site";
 import type { Certification } from "@/lib/content/types";
+import type { Image as SanityImage } from "sanity";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -21,9 +23,16 @@ interface AboutPageData {
   values?: { title: string; description: string }[];
 }
 
+interface RecognitionItem {
+  name: string;
+  url?: string;
+  logo: SanityImage;
+}
+
 export default async function AboutPage() {
   const about = await sanityFetch<AboutPageData>(aboutPageQuery);
   const certifications = await sanityFetch<Certification[]>(certificationsQuery);
+  const recognitions = await sanityFetch<RecognitionItem[]>(recognitionQuery);
 
   const mission = about?.mission || missionVisionValues.mission;
   const vision = about?.vision || missionVisionValues.vision;
@@ -73,6 +82,8 @@ export default async function AboutPage() {
           </Container>
         </section>
       )}
+
+      <RecognitionLogos items={recognitions || []} />
 
       <CTASection />
     </>

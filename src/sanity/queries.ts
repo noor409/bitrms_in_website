@@ -39,6 +39,8 @@ export const certificationsQuery = `*[_type == "certification"] | order(year des
 
 export const clientLogosQuery = `*[_type == "clientLogo"]{name, url, logo}`;
 
+export const recognitionQuery = `*[_type == "recognition"] | order(order asc){name, url, logo}`;
+
 export const jobsQuery = `*[_type == "jobOpening"] | order(_createdAt desc){
   title, department, location, type, description
 }`;
