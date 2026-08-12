@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Logo } from "./logo";
 import { services } from "@/lib/content/services";
 
@@ -66,19 +67,23 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button href="/contact" variant="primary">
-            Get in Touch
-          </Button>
-        </div>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
 
-        <button
-          className="text-white lg:hidden"
-          aria-label="Toggle menu"
-          onClick={() => setMobileOpen((v) => !v)}
-        >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          <div className="hidden lg:block">
+            <Button href="/contact" variant="primary">
+              Get in Touch
+            </Button>
+          </div>
+
+          <button
+            className="text-white lg:hidden"
+            aria-label="Toggle menu"
+            onClick={() => setMobileOpen((v) => !v)}
+          >
+            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </Container>
 
       {mobileOpen && (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "@/components/theme/theme-provider";
 
 interface Particle {
   x: number;
@@ -28,6 +29,7 @@ export function NetworkBackground({
   density?: number;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -173,6 +175,8 @@ export function NetworkBackground({
       container.removeEventListener("pointerleave", handlePointerLeave);
     };
   }, [density]);
+
+  if (theme === "light") return null;
 
   return <canvas ref={canvasRef} className={className} aria-hidden="true" />;
 }

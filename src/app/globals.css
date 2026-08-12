@@ -18,7 +18,7 @@
   --color-brand-100: #e7e9f2;
   --color-brand-50: #f5f7fa;
 
-  /* Accent — lime green, the site's primary CTA/highlight color */
+  /* Accent — lime green, the dark theme's primary CTA/highlight color */
   --color-accent-600: #b8d81a;
   --color-accent-500: #dcfd35;
   --color-accent-400: #e7fd6b;
@@ -26,6 +26,15 @@
   --color-accent-200: #f5feba;
   --color-accent-100: #fafedd;
 }
+
+/* "Classic" (light) theme colors are NOT defined here as a
+   `[data-theme="light"] { --x: ... }` override — that was tried first and
+   silently failed in production builds (Tailwind v4/Lightning CSS folds
+   these custom properties at build time, ignoring the conditional rule).
+   The actual light-theme palette lives in src/lib/theme-vars.ts and is
+   applied as inline styles on <html> by ThemeProvider + the layout's
+   anti-flash init script, which reliably overrides these regardless of
+   any stylesheet-level optimization. */
 
 @theme inline {
   --color-background: var(--background);
@@ -51,16 +60,93 @@
   --color-accent-600: var(--color-accent-600);
 
   --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
 }
+
+/* Custom variant so components can add explicit `light:` overrides where
+   the automatic token flip above isn't precise enough. */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Subtle dot texture, used only in the classic/light theme (see below) */
+.bg-dots {
+  background-image: radial-gradient(rgba(28, 39, 64, 0.14) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* ---------------------------------------------------------------------
+   Classic / light theme overrides
+   These re-point a handful of literal utility classes that were written
+   assuming the dark theme (text-white, border-white/N, bg-white/N) so
+   the whole site flips without editing every component, plus the
+   "old school" character: serif headings and sharp corners everywhere.
+   ------------------------------------------------------------------- */
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="light"] .text-white {
+  color: #17223a;
+}
+
+[data-theme="light"] .hover\:text-white:hover {
+  color: #17223a;
+}
+
+[data-theme="light"] .border-white\/10 {
+  border-color: rgb(28 39 64 / 0.12);
+}
+
+[data-theme="light"] .border-white\/15 {
+  border-color: rgb(28 39 64 / 0.2);
+}
+
+[data-theme="light"] .ring-white\/25 {
+  --tw-ring-color: rgb(28 39 64 / 0.35);
+}
+
+[data-theme="light"] .bg-white\/5 {
+  background-color: rgb(28 39 64 / 0.05);
+}
+
+[data-theme="light"] .bg-white\/10 {
+  background-color: rgb(28 39 64 / 0.07);
+}
+
+[data-theme="light"] .hover\:bg-white\/5:hover {
+  background-color: rgb(28 39 64 / 0.05);
+}
+
+[data-theme="light"] .hover\:bg-white\/10:hover {
+  background-color: rgb(28 39 64 / 0.07);
+}
+
+/* Sharp corners everywhere, including pill buttons */
+[data-theme="light"] .rounded-full,
+[data-theme="light"] .rounded-2xl,
+[data-theme="light"] .rounded-xl,
+[data-theme="light"] .rounded-lg,
+[data-theme="light"] .rounded-md,
+[data-theme="light"] .rounded-sm {
+  border-radius: 2px;
+}
+
+/* Serif headings for the "old school corporate" feel */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3 {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  letter-spacing: 0;
 }
 
 /* Per-service decorative micro-animations (ServiceIcon component) */
@@ -109,4 +195,11 @@ body {
   .service-icon-anim {
     animation: none !important;
   }
+}
+
+/* Old-school theme: drop the micro-animations too, in keeping with the
+   static/traditional character (network + section canvases are skipped
+   at the component level, see ThemeContext usage). */
+[data-theme="light"] .service-icon-anim {
+  animation: none !important;
 }

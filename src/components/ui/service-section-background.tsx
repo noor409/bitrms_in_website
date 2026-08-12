@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "@/components/theme/theme-provider";
 import type { IconKey } from "@/lib/content/types";
 
 const LIME = "220, 253, 53";
@@ -66,6 +67,7 @@ export function ServiceSectionBackground({
   className?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -358,6 +360,8 @@ export function ServiceSectionBackground({
       resizeObserver.disconnect();
     };
   }, [icon]);
+
+  if (theme === "light") return null;
 
   return <canvas ref={canvasRef} className={className} aria-hidden="true" />;
 }
