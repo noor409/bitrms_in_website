@@ -63,10 +63,6 @@
   --font-serif: var(--font-playfair);
 }
 
-/* Custom variant so components can add explicit `light:` overrides where
-   the automatic token flip above isn't precise enough. */
-@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -76,12 +72,6 @@ body {
 
 .text-balance {
   text-wrap: balance;
-}
-
-/* Subtle dot texture, used only in the classic/light theme (see below) */
-.bg-dots {
-  background-image: radial-gradient(rgba(28, 39, 64, 0.14) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
 }
 
 /* ---------------------------------------------------------------------

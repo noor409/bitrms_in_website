@@ -13,7 +13,6 @@ export function PageHero({
   return (
     <section className="relative overflow-hidden bg-brand-950 py-24">
       <NetworkBackground className="absolute inset-0 h-full w-full" density={0.6} />
-      <div className="bg-dots light:block absolute inset-0 hidden" />
       <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/70 to-transparent" />
 
       <Container className="relative max-w-3xl">

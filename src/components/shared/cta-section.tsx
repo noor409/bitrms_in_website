@@ -12,7 +12,6 @@ export function CTASection({
   return (
     <section className="relative overflow-hidden border-y border-white/10 bg-brand-900 py-20">
       <NetworkBackground className="absolute inset-0 h-full w-full" density={0.6} />
-      <div className="bg-dots light:block absolute inset-0 hidden" />
       <Container className="relative flex flex-col items-center gap-6 text-center">
         <h2 className="text-balance text-3xl font-bold text-white sm:text-4xl">{title}</h2>
         <p className="max-w-xl text-lg text-brand-300">{description}</p>

@@ -39,6 +39,16 @@ export function NetworkBackground({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Dark theme: lime lines/dots on navy. Light theme: navy lines/dots on
+    // cream, with the cursor interaction picked out in rust for a clear,
+    // visible accent against the lighter background.
+    const colors =
+      theme === "light"
+        ? { line: "23, 34, 58", dot: "23, 34, 58", mouse: "189, 90, 62" }
+        : { line: "220, 253, 53", dot: "245, 247, 250", mouse: "220, 253, 53" };
+    const lineAlpha = theme === "light" ? 0.28 : 0.16;
+    const dotAlpha = theme === "light" ? 0.75 : 0.55;
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -81,7 +91,7 @@ export function NetworkBackground({
           const dy = p.y - q.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < linkDistance) {
-            ctx.strokeStyle = `rgba(220, 253, 53, ${0.16 * (1 - dist / linkDistance)})`;
+            ctx.strokeStyle = `rgba(${colors.line}, ${lineAlpha * (1 - dist / linkDistance)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -95,7 +105,7 @@ export function NetworkBackground({
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MOUSE_LINK_DISTANCE) {
-            ctx.strokeStyle = `rgba(220, 253, 53, ${0.5 * (1 - dist / MOUSE_LINK_DISTANCE)})`;
+            ctx.strokeStyle = `rgba(${colors.mouse}, ${0.5 * (1 - dist / MOUSE_LINK_DISTANCE)})`;
             ctx.lineWidth = 1.2;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -106,14 +116,14 @@ export function NetworkBackground({
       }
 
       for (const p of particles) {
-        ctx.fillStyle = "rgba(245, 247, 250, 0.55)";
+        ctx.fillStyle = `rgba(${colors.dot}, ${dotAlpha})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
         ctx.fill();
       }
 
       if (mouse.x !== null && mouse.y !== null) {
-        ctx.fillStyle = "rgba(220, 253, 53, 0.9)";
+        ctx.fillStyle = `rgba(${colors.mouse}, 0.9)`;
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, 2.5, 0, Math.PI * 2);
         ctx.fill();
@@ -174,9 +184,7 @@ export function NetworkBackground({
       container.removeEventListener("pointermove", handlePointerMove);
       container.removeEventListener("pointerleave", handlePointerLeave);
     };
-  }, [density]);
-
-  if (theme === "light") return null;
+  }, [density, theme]);
 
   return <canvas ref={canvasRef} className={className} aria-hidden="true" />;
 }
