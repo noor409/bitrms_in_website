@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "tsx scripts/seed.ts",
-    "add-real-logos": "tsx scripts/add-real-logos.ts"
+    "add-real-logos": "tsx scripts/add-real-logos.ts",
+    "update-logos": "tsx scripts/update-logos.ts"
   },
   "dependencies": {
     "@portabletext/react": "^7.0.1",
