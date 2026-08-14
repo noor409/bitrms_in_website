@@ -24,7 +24,7 @@ export function RecognitionLogos({ items }: { items: RecognitionItem[] }) {
             const logo = (
               <div className="flex h-28 items-center justify-center rounded-xl bg-white p-5">
                 <Image
-                  src={urlForImage(item.logo).width(240).height(160).fit("max").url()}
+                  src={urlForImage(item.logo).height(320).fit("max").url()}
                   alt={item.name}
                   width={180}
                   height={110}

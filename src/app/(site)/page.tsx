@@ -36,6 +36,8 @@ export default async function HomePage() {
     "BITRMS delivers green hydrogen, cyber security, enterprise automation, and telecom infrastructure solutions engineered for reliability and long-term partnership.";
   const stats = home?.stats?.length ? home.stats : fallbackStats;
   const featuredProjects = (projects || []).slice(0, 3);
+  const clientList = (clients || []).filter((c) => c.category !== "Partner");
+  const partnerList = (clients || []).filter((c) => c.category === "Partner");
 
   return (
     <>
@@ -63,7 +65,8 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      <ClientLogos clients={clients || []} />
+      <ClientLogos clients={clientList} heading="Trusted by clients across telecom, industry & government" />
+      <ClientLogos clients={partnerList} heading="Our Partners" />
 
       {featuredProjects.length > 0 && (
         <section className="py-24">

@@ -37,7 +37,7 @@ export const testimonialsQuery = `*[_type == "testimonial"]{name, company, quote
 
 export const certificationsQuery = `*[_type == "certification"] | order(year desc){name, issuer, year, logo}`;
 
-export const clientLogosQuery = `*[_type == "clientLogo"]{name, url, logo}`;
+export const clientLogosQuery = `*[_type == "clientLogo"] | order(order asc){name, url, logo, category}`;
 
 export const recognitionQuery = `*[_type == "recognition"] | order(order asc){name, url, logo}`;
 
