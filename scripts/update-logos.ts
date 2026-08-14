@@ -67,12 +67,12 @@ async function run() {
   await patchLogoByName("clientLogo", "Lao PDR Tax Service Department", "clients/lao-pdr-tax-service.png");
   await patchLogoByName("clientLogo", "Micro Power Philippines", "clients/micro-power-philippines.png");
   await patchLogoByName("clientLogo", "Forschungszentrum Jülich", "partners/fz-juelich.png");
-  await patchLogoByName("clientLogo", "Amrita TBI", "partners/amrita-tbi.jpg");
-  await patchLogoByName("clientLogo", "Start in UP", "partners/start-in-up.jpg");
+  await patchLogoByName("clientLogo", "Amrita TBI", "partners/amrita-tbi.png");
+  await patchLogoByName("clientLogo", "Start in UP", "partners/start-in-up.png");
 
-  await patchLogoByName("recognition", "Start in UP", "recognition/start-in-up.jpg");
+  await patchLogoByName("recognition", "Start in UP", "recognition/start-in-up.png");
   await patchLogoByName("recognition", "Startup India", "recognition/startup-india-dpiit.jpg");
-  await patchLogoByName("recognition", "Amrita TBI", "recognition/amrita-tbi.jpg");
+  await patchLogoByName("recognition", "Amrita TBI", "recognition/amrita-tbi.png");
 
   const msme = await client.fetch<{ _id: string } | null>(
     `*[_type == "recognition" && name == "MSME"][0]{_id}`
