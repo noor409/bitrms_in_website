@@ -20,26 +20,17 @@ export function RecognitionLogos({ items }: { items: RecognitionItem[] }) {
           <span className="text-white">and Supported By</span>
         </h2>
         <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-          {items.map((item) => {
-            const logo = (
-              <div className="flex h-28 items-center justify-center rounded-xl bg-white p-5">
-                <Image
-                  src={urlForImage(item.logo).height(320).fit("max").url()}
-                  alt={item.name}
-                  width={180}
-                  height={110}
-                  className="max-h-20 w-auto object-contain"
-                />
-              </div>
-            );
-            return item.url ? (
-              <a key={item.name} href={item.url} target="_blank" rel="noreferrer">
-                {logo}
-              </a>
-            ) : (
-              <div key={item.name}>{logo}</div>
-            );
-          })}
+          {items.map((item) => (
+            <div key={item.name} className="flex h-28 items-center justify-center rounded-xl bg-white p-5">
+              <Image
+                src={urlForImage(item.logo).height(320).fit("max").url()}
+                alt={item.name}
+                width={180}
+                height={110}
+                className="max-h-20 w-auto object-contain"
+              />
+            </div>
+          ))}
         </div>
       </Container>
     </section>

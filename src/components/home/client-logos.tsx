@@ -16,31 +16,25 @@ function LogoGrid({ clients, heading }: { clients: ClientLogoItem[]; heading: st
       <p className="text-center text-sm font-semibold tracking-wide text-brand-400 uppercase">
         {heading}
       </p>
-      <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
-        {clients.map((client) => {
-          const card = (
-            <div className="flex h-16 items-center justify-center rounded-lg border border-white/10 bg-brand-950 px-3 text-center">
-              {client.logo ? (
-                <Image
-                  src={urlForImage(client.logo).height(128).fit("max").url()}
-                  alt={client.name}
-                  width={120}
-                  height={40}
-                  className="max-h-10 w-auto object-contain"
-                />
-              ) : (
-                <span className="text-xs font-semibold text-brand-300">{client.name}</span>
-              )}
-            </div>
-          );
-          return client.url ? (
-            <a key={client.name} href={client.url} target="_blank" rel="noreferrer">
-              {card}
-            </a>
-          ) : (
-            <div key={client.name}>{card}</div>
-          );
-        })}
+      <div className="mt-8 flex flex-wrap justify-center gap-6">
+        {clients.map((client) => (
+          <div
+            key={client.name}
+            className="flex h-20 w-40 items-center justify-center rounded-lg border border-white/10 bg-brand-950 px-3 text-center sm:w-44"
+          >
+            {client.logo ? (
+              <Image
+                src={urlForImage(client.logo).height(160).fit("max").url()}
+                alt={client.name}
+                width={150}
+                height={56}
+                className="max-h-14 w-auto object-contain"
+              />
+            ) : (
+              <span className="text-xs font-semibold text-brand-300">{client.name}</span>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
