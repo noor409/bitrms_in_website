@@ -65,8 +65,11 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      <ClientLogos clients={clientList} heading="Trusted by clients across telecom, industry & government" />
-      <ClientLogos clients={partnerList} heading="Our Partners" />
+      <ClientLogos
+        clients={clientList}
+        partners={partnerList}
+        clientsHeading="Trusted by clients across telecom, industry & government"
+      />
 
       {featuredProjects.length > 0 && (
         <section className="py-24">

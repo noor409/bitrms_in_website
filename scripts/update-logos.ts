@@ -64,23 +64,18 @@ async function patchLogoByName(type: "clientLogo" | "recognition", name: string,
 async function run() {
   console.log(`Updating logos in dataset "${dataset}"...`);
 
+  // The stripped-background version was illegible in the light theme (white
+  // wordmark on a near-white card) — laoooddoo's badge background is part of
+  // its actual brand mark, so restore the original instead of keying it out.
   await patchLogoByName("clientLogo", "Lao PDR Tax Service Department", "clients/lao-pdr-tax-service.png");
-  await patchLogoByName("clientLogo", "Micro Power Philippines", "clients/micro-power-philippines.png");
-  await patchLogoByName("clientLogo", "Forschungszentrum Jülich", "partners/fz-juelich.png");
-  await patchLogoByName("clientLogo", "Amrita TBI", "partners/amrita-tbi.png");
-  await patchLogoByName("clientLogo", "Start in UP", "partners/start-in-up.png");
 
-  await patchLogoByName("recognition", "Start in UP", "recognition/start-in-up.png");
-  await patchLogoByName("recognition", "Startup India", "recognition/startup-india-dpiit.jpg");
-  await patchLogoByName("recognition", "Amrita TBI", "recognition/amrita-tbi.png");
-
-  const msme = await client.fetch<{ _id: string } | null>(
-    `*[_type == "recognition" && name == "MSME"][0]{_id}`
+  const kolao = await client.fetch<{ _id: string } | null>(
+    `*[_type == "clientLogo" && name == "KOLAO Group"][0]{_id}`
   );
-  if (!msme) {
-    const logo = await uploadImage("recognition/msme.jpg");
-    await client.create({ _type: "recognition", name: "MSME", order: 4, logo });
-    console.log("Created Recognition: MSME");
+  if (!kolao) {
+    const logo = await uploadImage("clients/kolao-group.jpg");
+    await client.create({ _type: "clientLogo", name: "KOLAO Group", category: "Client", order: 6, logo });
+    console.log("Created Client: KOLAO Group");
   }
 
   console.log("Done.");
