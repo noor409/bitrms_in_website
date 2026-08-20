@@ -45,14 +45,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Keeps the server's docker-compose.yml in sync with the repo, without
-      # touching the .env file that already lives there.
+      # Keeps the server's docker-compose.yml and Caddyfile in sync with the
+      # repo, without touching the .env file that already lives there.
       - uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: "docker-compose.yml"
+          source: "docker-compose.yml,Caddyfile"
           target: "~/bitrms-deploy"
 
       - uses: appleboy/ssh-action@v1.2.0

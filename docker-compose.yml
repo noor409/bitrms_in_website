@@ -13,3 +13,24 @@ services:
       - "3000:3000"
     env_file:
       - .env
+
+  # Reverse proxy binding new.bitrms.in to the web service, with automatic
+  # HTTPS (Let's Encrypt) — see Caddyfile. Requires ports 80/443 open on the
+  # VPS and the DNS A record already pointing at this server.
+  caddy:
+    image: caddy:2-alpine
+    container_name: bitrms-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+
+volumes:
+  caddy_data:
+  caddy_config:

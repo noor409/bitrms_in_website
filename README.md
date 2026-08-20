@@ -95,8 +95,11 @@ The app is containerized and deploys automatically via GitHub Actions on every p
 3. It copies `docker-compose.yml` to the VPS and runs `docker compose pull && docker
    compose up -d`, so the server always ends up running the image that was just built.
 
-The site ends up reachable at `http://YOUR_SERVER_IP:3000`. Add a domain + HTTPS later
-by putting a reverse proxy (e.g. Caddy) in front — no changes to the app itself needed.
+The site is reachable directly at `http://YOUR_SERVER_IP:3000`, and via
+`https://new.bitrms.in` through the Caddy reverse proxy in `docker-compose.yml` /
+`Caddyfile`, which also handles automatic HTTPS (Let's Encrypt). To point the proxy at a
+different domain, edit the first line of `Caddyfile`. Requires the domain's DNS A record
+to point at the VPS and ports 80/443 to be open.
 
 ### One-time setup required
 
