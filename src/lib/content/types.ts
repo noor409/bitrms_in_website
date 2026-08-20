@@ -12,6 +12,11 @@ export type IconKey =
   | "trending-up"
   | "clock";
 
+export interface UseCase {
+  title: string;
+  description: string;
+}
+
 export interface Service {
   slug: string;
   title: string;
@@ -21,6 +26,7 @@ export interface Service {
   heroKicker: string;
   features: string[];
   benefits: string[];
+  useCases: UseCase[];
   body: string[];
 }
 

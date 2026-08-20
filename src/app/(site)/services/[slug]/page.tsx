@@ -91,6 +91,22 @@ export default async function ServiceDetailPage({
         </Container>
       </section>
 
+      {service.useCases && service.useCases.length > 0 && (
+        <section className="bg-brand-900 py-24">
+          <Container>
+            <SectionHeading kicker="In the Field" title="Use cases" />
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {service.useCases.map((useCase) => (
+                <div key={useCase.title} className="rounded-2xl border border-white/10 bg-brand-950 p-6">
+                  <h3 className="text-base font-bold text-white">{useCase.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-brand-300">{useCase.description}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
       {relatedProjects && relatedProjects.length > 0 && (
         <section className="bg-brand-900 py-24">
           <Container>

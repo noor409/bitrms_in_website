@@ -27,6 +27,28 @@ export const service = defineType({
     defineField({ name: "heroImage", title: "Hero Image", type: "image", options: { hotspot: true } }),
     defineField({ name: "features", title: "Key Offerings", type: "array", of: [{ type: "string" }] }),
     defineField({ name: "benefits", title: "Benefits", type: "array", of: [{ type: "string" }] }),
+    defineField({
+      name: "useCases",
+      title: "Use Cases",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "useCase",
+          fields: [
+            defineField({ name: "title", title: "Title", type: "string", validation: (r) => r.required() }),
+            defineField({
+              name: "description",
+              title: "Description",
+              type: "text",
+              rows: 3,
+              validation: (r) => r.required(),
+            }),
+          ],
+          preview: { select: { title: "title", subtitle: "description" } },
+        },
+      ],
+    }),
     defineField({ name: "body", title: "Body", type: "array", of: [{ type: "block" }] }),
     defineField({ name: "order", title: "Display Order", type: "number" }),
   ],

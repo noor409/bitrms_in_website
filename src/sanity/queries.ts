@@ -1,11 +1,11 @@
 export const servicesQuery = `*[_type == "service"] | order(order asc){
   "slug": slug.current, title, shortTitle, icon, summary, heroKicker,
-  heroImage, features, benefits, body
+  heroImage, features, benefits, useCases, body
 }`;
 
 export const serviceBySlugQuery = `*[_type == "service" && slug.current == $slug][0]{
   "slug": slug.current, title, shortTitle, icon, summary, heroKicker,
-  heroImage, features, benefits, body
+  heroImage, features, benefits, useCases, body
 }`;
 
 export const projectsQuery = `*[_type == "project"] | order(year desc){

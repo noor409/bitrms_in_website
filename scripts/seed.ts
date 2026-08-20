@@ -80,6 +80,12 @@ async function seed() {
       summary: service.summary,
       features: service.features,
       benefits: service.benefits,
+      useCases: service.useCases.map((useCase) => ({
+        _type: "useCase",
+        _key: cryptoKey(),
+        title: useCase.title,
+        description: useCase.description,
+      })),
       body: service.body.map((paragraph) => ({
         _type: "block",
         _key: cryptoKey(),

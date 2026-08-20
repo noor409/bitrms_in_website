@@ -22,6 +22,23 @@ export const services: Service[] = [
       "Compliance with national green energy mandates",
       "Access to green hydrogen incentive schemes",
     ],
+    useCases: [
+      {
+        title: "Industrial Decarbonization",
+        description:
+          "Replacing grey hydrogen and fossil fuel feedstock in steel, cement, and refining processes with green hydrogen to cut process emissions without re-engineering the entire plant.",
+      },
+      {
+        title: "Green Ammonia & Export Hubs",
+        description:
+          "Engineering hydrogen-to-ammonia conversion for fertilizer production and green ammonia export terminals, structured to qualify for national incentive programs.",
+      },
+      {
+        title: "Grid-Scale Renewable Storage",
+        description:
+          "Using electrolysis to store excess solar and wind generation as hydrogen for later dispatch, helping grid operators balance intermittent renewable supply.",
+      },
+    ],
     body: [
       "As industries and governments race toward net-zero targets, green hydrogen has emerged as one of the most viable pathways to decarbonize hard-to-abate sectors. BITRMS partners with energy producers, industrial clients, and public sector bodies to plan, design, and deliver green hydrogen projects from feasibility through commissioning.",
       "Our engineering team works across the full value chain — renewable power sizing, electrolyzer selection and integration, storage and distribution design, and safety compliance — so clients can move from concept to operating plant with a single accountable partner.",
@@ -48,6 +65,23 @@ export const services: Service[] = [
       "Audit-ready regulatory compliance",
       "Business continuity for critical systems",
       "Hardened protection for telecom & industrial infrastructure",
+    ],
+    useCases: [
+      {
+        title: "Telecom Network Hardening",
+        description:
+          "Securing distributed tower and NOC infrastructure against intrusion and denial-of-service attacks, with continuous monitoring across every site.",
+      },
+      {
+        title: "Critical Infrastructure Protection",
+        description:
+          "OT/SCADA security assessments and hardening for industrial and energy facilities, closing gaps between IT and operational technology networks.",
+      },
+      {
+        title: "Regulatory Compliance Audits",
+        description:
+          "Preparing enterprises for ISO 27001 and data protection audits with documentation, control implementation, and remediation ahead of certification deadlines.",
+      },
     ],
     body: [
       "BITRMS delivers cyber security services built for organizations that cannot afford downtime — telecom operators, industrial facilities, and enterprises running mission-critical infrastructure. Our approach combines proactive assessment with continuous monitoring, so threats are caught before they become incidents.",
@@ -76,6 +110,23 @@ export const services: Service[] = [
       "Reduced manual HR and admin overhead",
       "A platform that scales as the business grows",
     ],
+    useCases: [
+      {
+        title: "Multi-Site Workforce Attendance",
+        description:
+          "Facial recognition attendance deployed across distributed offices and factories, feeding directly into Odoo's HR and payroll modules for touchless, tamper-proof tracking.",
+      },
+      {
+        title: "Manufacturing Inventory & Production Control",
+        description:
+          "Odoo Inventory and Manufacturing modules unifying stock, procurement, and production planning onto one system, replacing spreadsheet-driven tracking.",
+      },
+      {
+        title: "Secure Facility Access Control",
+        description:
+          "Facial recognition access gating for restricted zones such as data centers and factory floors, integrated with HR records for automatic provisioning and offboarding.",
+      },
+    ],
     body: [
       "Many growing organizations run on a patchwork of spreadsheets and disconnected tools. BITRMS implements Odoo ERP to bring HR, inventory, sales, and accounting onto a single platform — configured and customized around how the business actually operates, not the other way around.",
       "For workforce management, we layer in AI-powered facial recognition for attendance and access control, replacing card and fingerprint systems with a faster, more hygienic, and harder-to-spoof alternative that feeds directly into Odoo's HR and payroll modules.",
@@ -103,6 +154,23 @@ export const services: Service[] = [
       "Faster fault detection and response",
       "Data-driven infrastructure decisions",
     ],
+    useCases: [
+      {
+        title: "Diesel Generator Fuel Theft Prevention",
+        description:
+          "Fuel-level sensors and instant alerts catch pilferage and unusual drainage across remote tower sites before it shows up as a budget overrun.",
+      },
+      {
+        title: "Battery Health & Backup Assurance",
+        description:
+          "Real-time battery monitoring flags degrading cells and backup shortfalls, preventing outages during grid downtime at unmanned sites.",
+      },
+      {
+        title: "Centralized Multi-Site NOC Visibility",
+        description:
+          "A single dashboard aggregating power, environmental, and security data across thousands of distributed sites, so operations teams act on one view instead of many.",
+      },
+    ],
     body: [
       "Telecom operators managing thousands of distributed sites need visibility they can act on in real time. BITRMS's Remote Monitoring System (RMS) gives network operations teams a live view of power, environmental, and security conditions across every tower and site from a single dashboard.",
       "The platform tracks DG runtime, battery health, fuel levels, and site temperature, raising alerts the moment a parameter drifts out of range — well before it becomes a service-affecting fault. Historical data feeds energy efficiency analytics that help operators cut diesel consumption and plan maintenance proactively.",
@@ -129,6 +197,23 @@ export const services: Service[] = [
       "Access to carbon credit markets",
       "Regulatory-ready reporting",
       "Support for climate-positive decision making",
+    ],
+    useCases: [
+      {
+        title: "Agriculture",
+        description:
+          "Predicting crop health and needs, running risk assessment and mitigation, and tracking carbon sequestration through agroforestry initiatives.",
+      },
+      {
+        title: "Infrastructure",
+        description:
+          "Using satellite imagery to track real-time development progress on building projects and spot carbon hotspots as construction proceeds.",
+      },
+      {
+        title: "Energy",
+        description:
+          "Evaluating land use for mini-grid deployments and analyzing mini-grid carbon performance to support efficient renewable energy rollout.",
+      },
     ],
     body: [
       "BITRMS's carbon and climate platform helps individuals, businesses, and governments proactively track their carbon footprint using satellite imagery and AI-driven analysis, spanning agriculture, infrastructure, and energy.",
